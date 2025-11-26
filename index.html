@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gauntlet Power Surge Challenge</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Fonts & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <!-- Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -115,9 +118,11 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
+    <!-- Navbar -->
     <nav class="bg-card-bg border-b border-gray-800 p-4 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="showView('dashboard')">
+                <!-- If you upload an image named 'logo.jpeg' to your github repo, it will show here. Otherwise it shows a placeholder. -->
                 <img src="Gauntlet Power Surge Logo.jpeg" alt="Logo" class="h-12 w-12 object-contain rounded-full border border-gray-700" onerror="this.src='https://placehold.co/100x100/000000/39FF14?text=PS'">
                 <div class="hidden md:block">
                     <h1 class="text-2xl font-bold leading-none tracking-wider text-white">THE GAUNTLET</h1>
@@ -134,14 +139,18 @@
         </div>
     </nav>
 
+    <!-- Main Content Area -->
     <main id="app-container" class="flex-grow container mx-auto p-4 md:p-6 relative">
         
+        <!-- LOADING SPINNER -->
         <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-90 z-[60] flex items-center justify-center hidden">
             <div class="loader"></div>
         </div>
 
+        <!-- AUTH VIEW (Landing Page) -->
         <div id="auth-view" class="max-w-4xl mx-auto mt-6 grid md:grid-cols-2 gap-8">
             
+            <!-- Login Column -->
             <div class="bg-card-bg p-8 rounded-2xl border border-gray-800 shadow-2xl h-fit">
                 <div class="text-center mb-8">
                     <img src="Gauntlet Power Surge Logo.jpeg" alt="Logo" class="h-24 mx-auto mb-4 rounded-full border-2 border-neon-green shadow-[0_0_15px_rgba(57,255,20,0.3)] animate-pulse-slow" onerror="this.src='https://placehold.co/150x150/000000/39FF14?text=PS'">
@@ -163,12 +172,9 @@
                     <button type="submit" class="w-full bg-neon-green hover:bg-green-400 text-black font-teko text-xl font-bold py-3 rounded transition transform active:scale-95 shadow-[0_0_10px_rgba(57,255,20,0.4)]">
                         START CHALLENGE
                     </button>
-
-                    <button type="button" onclick="showPreviewModal()" class="w-full bg-transparent border border-gray-700 text-gray-400 hover:text-white hover:border-neon-green font-teko text-xl font-bold py-3 rounded transition flex items-center justify-center">
-                        <i class="fas fa-eye mr-2"></i> PREVIEW BLUEPRINT
-                    </button>
                 </form>
 
+                <!-- Mission Briefing / Guidelines -->
                 <div class="mt-8 pt-6 border-t border-gray-800">
                     <h3 class="text-xl text-white font-teko mb-2"><i class="fas fa-clipboard-list text-neon-green mr-2"></i> MISSION BRIEFING</h3>
                     <ul class="text-sm text-gray-400 space-y-2">
@@ -179,7 +185,9 @@
                 </div>
             </div>
 
+            <!-- Hall of Fame Column -->
             <div class="flex flex-col gap-6">
+                <!-- Hall of Fame Card -->
                 <div class="bg-card-bg p-6 rounded-2xl border border-gray-800 shadow-xl relative overflow-hidden flex-1">
                     <div class="absolute top-0 right-0 p-4 opacity-10">
                         <i class="fas fa-trophy text-6xl text-yellow-500"></i>
@@ -188,6 +196,7 @@
                     <p class="text-xs text-gray-500 mb-4 uppercase font-bold">Warriors who conquered the surge</p>
                     
                     <div id="hall-of-fame-list" class="space-y-3 min-h-[250px]">
+                        <!-- Populated by JS -->
                         <div class="animate-pulse flex space-x-4">
                             <div class="h-10 w-10 bg-gray-700 rounded-full"></div>
                             <div class="flex-1 space-y-2 py-1">
@@ -198,6 +207,7 @@
                     </div>
                 </div>
 
+                <!-- Motivation Card -->
                 <div class="bg-gradient-to-br from-gray-900 to-black p-6 rounded-2xl border border-gray-800 flex items-center justify-center text-center">
                     <div>
                         <p class="text-neon-green font-teko text-2xl">"IT DOES NOT GET EASIER.</p>
@@ -207,7 +217,9 @@
             </div>
         </div>
 
+        <!-- DASHBOARD VIEW -->
         <div id="dashboard-view" class="hidden animate-fade-in pb-20">
+            <!-- Header Stats -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-card-bg p-4 rounded-xl border-l-4 border-neon-green">
                     <p class="text-gray-400 text-xs uppercase font-bold">Total Progress</p>
@@ -228,12 +240,16 @@
                 </div>
             </div>
 
+            <!-- Weeks Grid -->
             <div class="space-y-8" id="weeks-container">
-                </div>
+                <!-- Content injected by JS -->
+            </div>
         </div>
 
+        <!-- WORKOUT DETAIL MODAL -->
         <div id="workout-modal" class="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
             <div class="bg-card-bg w-full max-w-4xl rounded-xl border border-gray-800 shadow-2xl relative flex flex-col max-h-full">
+                <!-- Header -->
                 <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-dark-bg rounded-t-xl">
                     <div>
                         <h3 id="modal-title" class="text-2xl md:text-3xl text-white font-teko">WORKOUT TITLE</h3>
@@ -242,9 +258,12 @@
                     <button onclick="closeWorkoutModal()" class="text-gray-400 hover:text-white text-2xl px-2">&times;</button>
                 </div>
 
+                <!-- Scrollable Content -->
                 <div class="p-4 overflow-y-auto" id="modal-content">
-                    </div>
+                    <!-- Video players injected here -->
+                </div>
 
+                <!-- Footer -->
                 <div class="p-4 border-t border-gray-800 bg-dark-bg rounded-b-xl flex justify-between items-center">
                     <div class="text-xs text-gray-500">
                         <i class="fas fa-dumbbell mr-1"></i> Ensure you warm up before starting.
@@ -255,26 +274,8 @@
                 </div>
             </div>
         </div>
-        
-        <div id="preview-modal" class="fixed inset-0 bg-black bg-opacity-95 z-[70] flex items-center justify-center hidden p-4">
-            <div class="bg-card-bg w-full max-w-4xl max-h-[85vh] rounded-xl border border-gray-800 shadow-2xl flex flex-col animate-fade-in">
-                <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-dark-bg rounded-t-xl">
-                    <div>
-                        <h3 class="text-2xl text-neon-green font-teko tracking-wide">THE GAUNTLET BLUEPRINT</h3>
-                        <p class="text-xs text-gray-500 uppercase">Full 4-Week Itinerary</p>
-                    </div>
-                    <button onclick="closePreviewModal()" class="text-gray-400 hover:text-white text-3xl px-2">&times;</button>
-                </div>
-                
-                <div class="p-6 overflow-y-auto space-y-8 custom-scrollbar" id="preview-content">
-                    </div>
 
-                <div class="p-4 border-t border-gray-800 bg-dark-bg rounded-b-xl text-center">
-                    <button onclick="closePreviewModal()" class="text-gray-400 hover:text-white font-teko text-lg uppercase">Close Preview</button>
-                </div>
-            </div>
-        </div>
-
+        <!-- PROFILE VIEW -->
         <div id="profile-view" class="hidden max-w-2xl mx-auto mt-6">
             <h2 class="text-4xl mb-6 border-b border-gray-800 pb-2">MY PROFILE</h2>
             
@@ -282,10 +283,7 @@
                 <h3 class="text-xl font-bold mb-4 text-neon-green">Warrior Details</h3>
                 <div class="mb-4">
                     <label class="block text-gray-500 text-xs uppercase font-bold mb-1">Username</label>
-                    <div class="flex items-center">
-                        <div id="profile-username" class="text-white text-2xl font-teko tracking-wide">...</div>
-                        <button onclick="editUsername()" class="ml-4 text-gray-400 hover:text-neon-green transition"><i class="fas fa-edit"></i></button>
-                    </div>
+                    <div id="profile-username" class="text-white text-2xl font-teko tracking-wide">...</div>
                 </div>
                 <div class="mb-4">
                      <label class="block text-gray-500 text-xs uppercase font-bold mb-1">Email ID</label>
@@ -300,6 +298,7 @@
             </div>
         </div>
 
+        <!-- CERTIFICATE MODAL -->
         <div id="certificate-modal" class="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center hidden p-4">
             <div class="bg-white p-2 rounded-lg max-w-4xl w-full relative">
                 <button onclick="document.getElementById('certificate-modal').classList.add('hidden')" class="absolute -top-10 right-0 text-white text-3xl hover:text-neon-green">&times;</button>
@@ -314,6 +313,7 @@
 
     </main>
 
+    <!-- DISCLAIMER FOOTER -->
     <footer class="bg-black py-6 border-t border-gray-900 mt-auto">
         <div class="container mx-auto px-4 text-center">
             <p class="text-gray-600 text-xs leading-relaxed max-w-3xl mx-auto">
@@ -323,70 +323,230 @@
     </footer>
 
     <script>
-        // --- WORKOUT DATA ---
+        // --- WORKOUT DATA (EXTRACTED FROM CSV) ---
         const workoutData = [
             {
                 title: "WEEK 1",
                 days: [
-                    { day: 1, title: "Full Body", videos: [{id: "fsmV9Uaz0c", trainer: "DHM", time: "30m", type: "Weights"}, {id: "FwWf1KLM3ro", trainer: "CH", time: "10m", type: "Body"}] },
-                    { day: 2, title: "Upper & Core", videos: [{id: "CyARVVIq-Oc", trainer: "DHM", time: "30m", type: "Weights"}, {id: "lolldJiLf90", trainer: "CH", time: "10m", type: "Body"}] },
-                    { day: 3, title: "Lower Push", videos: [{id: "r78WzW27-Ul", trainer: "DHM", time: "20m", type: "Weights"}, {id: "UZ3U0X5fb1Y", trainer: "HR", time: "20m", type: "Weights"}] },
-                    { day: 4, title: "Legs & Cardio", videos: [{id: "C5ayBgdUjOU", trainer: "GA", time: "20m", type: "Weights"}, {id: "dFCkDHglbvM", trainer: "JY", time: "20m", type: "Body"}] },
-                    { day: 5, title: "Full Body Surge", videos: [{id: "J2SJAXxTp4M", trainer: "FK", time: "45m", type: "Weights"}] },
+                    { 
+                        day: 1, 
+                        title: "Full Body", 
+                        videos: [
+                            {id: "_fsmV9Uaz0c", trainer: "DHM", time: "30m", type: "Weights"}, 
+                            {id: "FwWf1KLM3ro", trainer: "CH", time: "10m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 2, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "CyARVVIq_Oc", trainer: "DHM", time: "30m", type: "Weights"}, 
+                            {id: "IolldJiLf90", trainer: "CH", time: "10m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 3, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "r78WzW27-UI", trainer: "DHM", time: "20m", type: "Weights"}, 
+                            {id: "UZ3U0X5fb1Y", trainer: "HR", time: "20m", type: "Weights"}
+                        ] 
+                    },
+                    { 
+                        day: 4, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "C5ayBgdUjOU", trainer: "GA", time: "20m", type: "Weights"}, 
+                            {id: "dFCkDHglbvM", trainer: "JY", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 5, 
+                        title: "Full Body", 
+                        videos: [
+                            {id: "J2SJAXxTp4M", trainer: "FK", time: "45m", type: "Weights"}
+                        ] 
+                    },
                 ]
             },
             {
                 title: "WEEK 2",
                 days: [
-                    { day: 1, title: "Upper Focus", videos: [{id: "XVwVnFQCgNw", trainer: "DHM", time: "20m", type: "Weights"}, {id: "8PwoytUU06g", trainer: "CH", time: "20m", type: "Body"}] },
-                    { day: 2, title: "Lower Endurance", videos: [{id: "UF7dfEEVDp8", trainer: "GA", time: "40m", type: "Weights"}, {id: "hRlp66B-lx4", trainer: "JY", time: "10m", type: "Body"}] },
-                    { day: 3, title: "Double Upper", videos: [{id: "155Nb8rjYLw", trainer: "HR", time: "20m", type: "Weights"}, {id: "K01g2UV7YM0", trainer: "DHM", time: "20m", type: "Weights"}] },
-                    { day: 4, title: "Lower Power", videos: [{id: "hBanCm-yqB8", trainer: "CG", time: "30m", type: "Weights"}, {id: "jPRZJcowjs4", trainer: "JY", time: "20m", type: "Body"}] },
-                    { day: 5, title: "The Long Haul", videos: [{id: "9gilbVUqPIQ", trainer: "HR", time: "60m", type: "Weights"}] },
+                    { 
+                        day: 1, 
+                        title: "Upper Body", 
+                        videos: [
+                            {id: "XVwVnFQCgNw", trainer: "DHM", time: "20m", type: "Weights"}, 
+                            {id: "8PwoytUU06g", trainer: "CH", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 2, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "UF7dfEEVDp8", trainer: "GA", time: "40m", type: "Weights"}, 
+                            {id: "hRlp66B-lx4", trainer: "JY", time: "10m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 3, 
+                        title: "Double Upper", 
+                        videos: [
+                            {id: "155Nb8rjYLw", trainer: "HR", time: "20m", type: "Weights"}, 
+                            {id: "K01g2UV7YM0", trainer: "DHM", time: "20m", type: "Weights"}
+                        ] 
+                    },
+                    { 
+                        day: 4, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "hBanCm-yqB8", trainer: "CG", time: "30m", type: "Weights"}, 
+                            {id: "jPRZJcowjs4", trainer: "JY", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 5, 
+                        title: "Full Body", 
+                        videos: [
+                            {id: "9giIbVUqPIQ", trainer: "HR", time: "60m", type: "Weights"}
+                        ] 
+                    },
                 ]
             },
             {
                 title: "WEEK 3",
                 days: [
-                    { day: 1, title: "Total Body", videos: [{id: "ihSylL7kF4M", trainer: "JH", time: "20m", type: "Weights"}, {id: "hy6NNyzX31U", trainer: "GA", time: "20m", type: "Weights"}] },
-                    { day: 2, title: "Upper & Core", videos: [{id: "K01g2UV7YM0", trainer: "T&D", time: "20m", type: "Weights"}, {id: "SGGFhEpAkPw", trainer: "BJ", time: "20m", type: "Body"}] },
-                    { day: 3, title: "Lower Strength", videos: [{id: "-kWoqHoLJWE", trainer: "HR", time: "30m", type: "Weights"}, {id: "7nxUt-QPBjs", trainer: "JH", time: "20m", type: "Body"}] },
-                    { day: 4, title: "Mix It Up", videos: [{id: "ZEZqSKzQ0Qc", trainer: "DHM", time: "30m", type: "Weights"}, {id: "wcSiAdCnvCQ", trainer: "AT", time: "20m", type: "Body"}] },
-                    { day: 5, title: "Power Finish", videos: [{id: "UhjLARslips", trainer: "FK", time: "50m", type: "Weights"}] },
+                    { 
+                        day: 1, 
+                        title: "Double Full", 
+                        videos: [
+                            {id: "ihSyIL7kF4M", trainer: "JH", time: "20m", type: "Weights"}, 
+                            {id: "hy6NNyzX31U", trainer: "GA", time: "20m", type: "Weights"}
+                        ] 
+                    },
+                    { 
+                        day: 2, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "K01g2UV7YM0", trainer: "T&D", time: "20m", type: "Weights"}, 
+                            {id: "SGGFhEpAkPw", trainer: "BJ", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 3, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "-kWoqHoLJWE", trainer: "HR", time: "30m", type: "Weights"}, 
+                            {id: "7nxUt-QPBjs", trainer: "JH", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 4, 
+                        title: "Full & Upper", 
+                        videos: [
+                            {id: "ZEZqSKzQ0Qc", trainer: "DHM", time: "30m", type: "Weights"}, 
+                            {id: "wcSiAdCnvCQ", trainer: "AT", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 5, 
+                        title: "Full Body", 
+                        videos: [
+                            {id: "UhjLARslips", trainer: "FK", time: "50m", type: "Weights"}
+                        ] 
+                    },
                 ]
             },
             {
                 title: "WEEK 4",
                 days: [
-                    { day: 1, title: "Upper Blast", videos: [{id: "sKz102jMW4A", trainer: "DHM", time: "30m", type: "Weights"}, {id: "Eq4qBpBa071", trainer: "CH", time: "20m", type: "Body"}] },
-                    { day: 2, title: "Lower Grind", videos: [{id: "l5gWYLJKFwQ", trainer: "BJ", time: "45m", type: "Weights"}, {id: "WfdXMj917H0", trainer: "AT", time: "10m", type: "Body"}] },
-                    { day: 3, title: "Upper & Full", videos: [{id: "lBickDLoU8o", trainer: "BJ", time: "20m", type: "Weights"}, {id: "9UQ60VIHIQ4", trainer: "GA", time: "35m", type: "Weights"}] },
-                    { day: 4, title: "The Surge", videos: [{id: "vp8ASKZGU8Y", trainer: "DHM", time: "50m", type: "Weights"}, {id: "jzUpUe29IXI", trainer: "CH", time: "8m", type: "Body"}] },
-                    { day: 5, title: "Final Exam", videos: [{id: "bk0JISXMbS4", trainer: "FK", time: "45m", type: "Weights"}, {id: "-NFhnXvbdoc", trainer: "T&D", time: "10m", type: "Body"}] },
+                    { 
+                        day: 1, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "sKz102jMW4A", trainer: "DHM", time: "30m", type: "Weights"}, 
+                            {id: "Eq4qBpBa07I", trainer: "CH", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 2, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "l5gWYLJKFwQ", trainer: "BJ", time: "45m", type: "Weights"}, 
+                            {id: "WfdXMj9I7H0", trainer: "AT", time: "10m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 3, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "lBickDLoU8o", trainer: "BJ", time: "20m", type: "Weights"}, 
+                            {id: "9UQ60VlHiQ4", trainer: "GA", time: "35m", type: "Weights"}
+                        ] 
+                    },
+                    { 
+                        day: 4, 
+                        title: "Full Body Surge", 
+                        videos: [
+                            {id: "vp8ASKZGU8Y", trainer: "DHM", time: "50m", type: "Weights"}, 
+                            {id: "jzUpUe29lXI", trainer: "CH", time: "8m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 5, 
+                        title: "Final Exam", 
+                        videos: [
+                            {id: "bk0JlSXMbS4", trainer: "FK", time: "45m", type: "Weights"}, 
+                            {id: "-NFhnXvbdoc", trainer: "T&D", time: "10m", type: "Body"}
+                        ] 
+                    },
                 ]
             },
             {
                 title: "BONUS WEEK",
                 isBonus: true,
                 days: [
-                    { day: 1, title: "Bonus Upper", videos: [{id: "nixaLRF0Jd8", trainer: "OS", time: "20m", type: "Weights"}, {id: "mm47bCaCzpQ", trainer: "BJ", time: "20m", type: "Body"}] },
-                    { day: 2, title: "Bonus Lower", videos: [{id: "0YCRcnhd410", trainer: "HR", time: "20m", type: "Weights"}, {id: "fsmV9Uaz0c", trainer: "DHM", time: "30m", type: "Weights"}] },
-                    { day: 3, title: "Bonus Mix", videos: [{id: "JBz2dILOVIc", trainer: "AT", time: "20m", type: "Body"}, {id: "3p35bBbxNTk", trainer: "NBD", time: "25m", type: "Body"}] },
-                    { day: 4, title: "Bonus Strength", videos: [{id: "fJQmoPKvjTg", trainer: "T&D", time: "30m", type: "Weights"}, {id: "KNFbXsO5J5U", trainer: "JH", time: "20m", type: "Body"}] },
-                    { day: 5, title: "Bonus Finish", videos: [{id: "Umlq-LeOoDo", trainer: "FK", time: "45m", type: "Weights"}] },
+                    { 
+                        day: 1, 
+                        title: "Double Upper", 
+                        videos: [
+                            {id: "nixaLRF0Jd8", trainer: "OS", time: "20m", type: "Weights"}, 
+                            {id: "mm47bCaCzpQ", trainer: "BJ", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 2, 
+                        title: "Lower & Full", 
+                        videos: [
+                            {id: "0YCRcnhd4I0", trainer: "HR", time: "20m", type: "Weights"}, 
+                            {id: "_fsmV9Uaz0c", trainer: "DHM", time: "30m", type: "Weights"}
+                        ] 
+                    },
+                    { 
+                        day: 3, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "JBz2dILOVlc", trainer: "AT", time: "20m", type: "Body"}, 
+                            {id: "3p35bBbxNTk", trainer: "NBD", time: "25m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 4, 
+                        title: "Upper & Full", 
+                        videos: [
+                            {id: "fJQmoPKvjTg", trainer: "T&D", time: "30m", type: "Weights"}, 
+                            {id: "KNFbXsO5J5U", trainer: "JH", time: "20m", type: "Body"}
+                        ] 
+                    },
+                    { 
+                        day: 5, 
+                        title: "Full Body", 
+                        videos: [
+                            {id: "UmIq-LeOoDo", trainer: "FK", time: "45m", type: "Weights"}
+                        ] 
+                    },
                 ]
             }
-        ];
-
-        // List of video IDs that cannot be embedded (based on identified issues)
-        const nonEmbeddableVideos = [
-            "XVwVnFQCgNw",  // Week 2 Day 1 DHM
-            "9gilbVUqPIQ",  // Week 2 Day 5 HR
-            "ihSylL7kF4M",  // Week 3 Day 1 JH
-            "7nxUt-QPBjs",  // Week 3 Day 3 JH
-            "0YCRcnhd410",  // Bonus Week Day 2 HR
-            "JBz2dILOVIc",  // Bonus Week Day 3 AT
-            "Umlq-LeOoDo"   // Bonus Week Day 5 FK
         ];
 
         // --- MOCK HALL OF FAME DATA ---
@@ -493,7 +653,7 @@
 
             // SMART RESUME: Scroll to last incomplete day
             if (shouldScroll) {
-                setTimeout(scrollToCurrentProgress, 0); // Slight delay for render
+                setTimeout(scrollToCurrentProgress, 500); // Slight delay for render
             }
         };
 
@@ -591,7 +751,7 @@
             
             let totalWorkouts = 0;
             let completedWorkouts = 0;
-            let mainChallengeCompleted = true; // Tracks weeks 1-4 only
+            let mainChallengeCompleted = true; // Tracks weeks 1-4
 
             workoutData.forEach((week, wIndex) => {
                 const isBonus = week.isBonus;
@@ -678,36 +838,21 @@
 
             // Render Videos
             const contentDiv = document.getElementById('modal-content');
-            contentDiv.innerHTML = dayData.videos.map(video => {
-                if (nonEmbeddableVideos.includes(video.id)) {
-                    // Render link instead of embed
-                    return `
-                        <div class="mb-6">
-                            <div class="flex justify-between items-end mb-2">
-                                <span class="text-sm font-bold text-gray-300"><i class="fas fa-user-ninja mr-1"></i> Trainer: ${video.trainer}</span>
-                                <span class="text-xs bg-gray-700 px-2 py-1 rounded text-white">${video.type} • ${video.time}</span>
-                            </div>
-                            <div class="bg-black p-4 rounded text-center border border-gray-800">
-                                <p class="text-yellow-400 mb-4 font-bold">This video cannot be embedded due to restrictions.</p>
-                                <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="bg-neon-green text-black px-6 py-2 rounded font-teko text-lg hover:bg-green-400 transition">Watch on YouTube</a>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    // Render embed
-                    return `
-                        <div class="mb-6">
-                            <div class="flex justify-between items-end mb-2">
-                                <span class="text-sm font-bold text-gray-300"><i class="fas fa-user-ninja mr-1"></i> Trainer: ${video.trainer}</span>
-                                <span class="text-xs bg-gray-700 px-2 py-1 rounded text-white">${video.type} • ${video.time}</span>
-                            </div>
-                            <div class="video-container shadow-lg border border-gray-800">
-                                <iframe src="https://www.youtube.com/embed/${video.id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    `;
-                }
-            }).join('');
+            contentDiv.innerHTML = dayData.videos.map(video => `
+                <div class="mb-6">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-sm font-bold text-gray-300"><i class="fas fa-user-ninja mr-1"></i> Trainer: ${video.trainer}</span>
+                        <span class="text-xs bg-gray-700 px-2 py-1 rounded text-white">${video.type} • ${video.time}</span>
+                    </div>
+                    <div class="video-container shadow-lg border border-gray-800 mb-2">
+                        <iframe src="https://www.youtube.com/embed/${video.id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Fallback Link -->
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="block text-center text-xs text-gray-500 hover:text-neon-green transition">
+                        <i class="fas fa-external-link-alt"></i> Video not loading? Watch on YouTube
+                    </a>
+                </div>
+            `).join('');
 
             updateCompleteButton(isDone);
             document.getElementById('workout-modal').classList.remove('hidden');
@@ -740,32 +885,6 @@
             
             updateCompleteButton(newState);
             renderDashboard();
-        };
-
-        // --- USERNAME EDIT FUNCTIONALITY ---
-        const editUsername = () => {
-            const usernameDiv = document.getElementById('profile-username');
-            const currentName = currentUser.name;
-            usernameDiv.innerHTML = `
-                <input type="text" id="edit-username-input" value="${currentName}" class="bg-dark-bg border border-gray-700 text-white p-1 rounded text-2xl font-teko tracking-wide">
-                <button onclick="saveUsername()" class="ml-2 text-neon-green hover:text-green-400"><i class="fas fa-save"></i></button>
-                <button onclick="cancelEditUsername()" class="ml-2 text-red-400 hover:text-red-300"><i class="fas fa-times"></i></button>
-            `;
-        };
-
-        const saveUsername = () => {
-            const input = document.getElementById('edit-username-input');
-            const newName = input.value.trim();
-            if (newName && newName !== currentUser.name) {
-                currentUser.name = newName;
-                localStorage.setItem('gauntlet_user', JSON.stringify(currentUser));
-                document.getElementById('nav-username').textContent = newName;
-            }
-            document.getElementById('profile-username').textContent = currentUser.name;
-        };
-
-        const cancelEditUsername = () => {
-            document.getElementById('profile-username').textContent = currentUser.name;
         };
 
         // --- CERTIFICATE GENERATION ---
@@ -829,50 +948,6 @@
                 a.download = `Gauntlet_Certificate_${userName}.png`;
                 a.click();
             };
-        };
-
-        // --- PREVIEW FUNCTIONALITY ---
-        const showPreviewModal = () => {
-            const container = document.getElementById('preview-content');
-            container.innerHTML = ''; // Clear previous content
-
-            workoutData.forEach((week, index) => {
-                const weekDiv = document.createElement('div');
-                // Styling for the week block
-                weekDiv.className = "relative pl-6 border-l-2 " + (week.isBonus ? "border-yellow-600" : "border-neon-green");
-                
-                // Build the days list
-                const daysList = week.days.map(day => `
-                    <div class="flex items-center justify-between bg-dark-bg p-3 rounded border border-gray-800">
-                        <div>
-                            <span class="text-xs text-gray-500 font-bold uppercase block">Day ${day.day}</span>
-                            <span class="text-white font-teko text-lg tracking-wide">${day.title}</span>
-                        </div>
-                        <div class="flex gap-2">
-                             ${day.videos.map(v => `
-                                <span class="text-[10px] px-2 py-1 rounded font-bold ${v.type === 'Weights' ? 'bg-blue-900/50 text-blue-200' : 'bg-purple-900/50 text-purple-200'}">
-                                    ${v.time}
-                                </span>
-                             `).join('')}
-                        </div>
-                    </div>
-                `).join('');
-
-                weekDiv.innerHTML = `
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full ${week.isBonus ? 'bg-yellow-500' : 'bg-neon-green'}"></div>
-                    <h4 class="text-2xl font-teko mb-3 ${week.isBonus ? 'text-yellow-500' : 'text-white'}">${week.title}</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                        ${daysList}
-                    </div>
-                `;
-                container.appendChild(weekDiv);
-            });
-
-            document.getElementById('preview-modal').classList.remove('hidden');
-        };
-
-        const closePreviewModal = () => {
-            document.getElementById('preview-modal').classList.add('hidden');
         };
 
         // Start App
